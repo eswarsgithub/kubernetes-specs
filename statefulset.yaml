@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gol-sts
+spec:
+  minReadySeconds: 30
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: gol
+  serviceName: gol-svc
+  template:
+    metadata:
+      labels:
+        app: gol
+        version: "1.0"
+    spec:
+      containers:
+      - image: saieswarprasad/gameoflife:05-03-2021
+        name: golc 
+        ports:
+        - containerPort: 8080    

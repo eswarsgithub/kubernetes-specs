@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ubuntu-job
+spec:
+  template:
+    metadata:
+      name: ubuntu-pod
+      labels:
+        app: ubun
+        version: "1.1"
+    spec:
+      containers:
+      - args:
+        - /bin/bash
+          -c
+          sleep 10m       
+        image: ubuntu:latest
+        name: ubuntu
+        ports:
+        - containerPort: 8080
+          protocol: TCP

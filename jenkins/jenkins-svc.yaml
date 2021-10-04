@@ -1,0 +1,14 @@
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: jenkins-svc
+spec:
+  ports:
+  - nodePort: 30113
+    port: 8080
+    targetPort: 8080 
+  selector:
+    app: jenkins
+    version: "2.60.3"  
+  type: NodePort

@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: gol-dmn
+spec:
+  minReadySeconds: 30
+  selector:
+    matchLabels: 
+      app: gol
+  template:
+    metadata:
+      labels:
+        app: gol
+        version: "1.0"
+    spec:
+      containers:
+      - image: saieswarprasad/gameoflife:05-03-2021
+        name: golc 
+        ports:
+        - containerPort: 8080    

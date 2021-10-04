@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /gol
+        pathType: Prefix
+        backend:
+          service:
+            name: gol-svc
+            port:
+              number: 8080
+      - path: /spc
+        pathType: Prefix
+        backend:
+          service:
+            name: spc-svc
+            port:
+              number: 8080

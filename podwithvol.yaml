@@ -1,0 +1,17 @@
+---
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: podwithvol
+spec:
+  containers:
+  - image: saieswarprasad/gameoflife:05-03-2021
+    name: golc
+    volumeMounts: 
+    - mountPath: /tmp
+      name: gol-vol
+  volumes:  
+  - name: gol-vol
+    hostPath:
+      path:  /tmp
+      type: Directory

@@ -1,0 +1,33 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gol-deploy
+  labels:
+    app: goldp
+spec:
+  minReadySeconds: 30
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gol-p
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: gol-pod
+      labels:
+        app: gol-p
+        version: "1.1"
+    spec:
+      containers:
+      - image: jenkins:2.60.3
+        name: golc
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+         
+    

@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: spc-rs
+spec:
+  minReadySeconds: 30
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spc
+  template:
+    metadata:
+      labels:
+        app: spc
+        version: "1.0"
+    spec:
+      containers:
+      - image: saieswarprasad/springpet-clinic:09-03-2021
+        name: spc 
+        ports:
+        - containerPort: 8080
+         
